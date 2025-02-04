@@ -1,11 +1,64 @@
 import { Button, Card, Form } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
 import { CustomModal } from "components/CustomModal/CustomModal.tsx";
-import { useState } from "react";
-import { ButtonGroup } from "components/ButtonGroup/ButtonGroup.tsx";
+import { FC, useEffect, useState } from "react";
+import "./InputForm.scss";
 
-export const InputForm = () => {
-  const [show, setShow] = useState(false);
+interface InputFormProps {
+  isEditing: boolean;
+  onAddNode: (title: string, description: string) => void;
+  onEditNode: (title: string, description: string) => void;
+  onDeleteNote: () => void;
+  initialTitle: string;
+  initialDescription: string;
+}
+
+export const InputForm: FC<InputFormProps> = ({
+  isEditing,
+  onEditNode,
+  onAddNode,
+  onDeleteNote,
+  initialDescription,
+  initialTitle,
+}) => {
+  const [showAlertTitle, setShowAlertTitle] = useState(false);
+  const [showAlertClose, setShowAlertClose] = useState(false);
+
+  const [title, setTitle] = useState(initialTitle);
+  const [description, setDescription] = useState(initialDescription);
+
+  useEffect(() => {
+    if (isEditing) {
+      setTitle(initialTitle);
+      setDescription(initialDescription);
+    } else {
+      setTitle("");
+      setDescription("");
+    }
+  }, [isEditing, initialTitle, initialDescription]);
+
+  const handleAdd = () => {
+    if (title === "") {
+      setShowAlertTitle(true);
+    } else {
+      onAddNode(title, description);
+      setTitle("");
+      setDescription("");
+    }
+  };
+
+  const handleEdit = () => {
+    if (title === "") {
+      setShowAlertTitle(true);
+    } else {
+      onEditNode(title, description);
+      setTitle("");
+      setDescription("");
+    }
+  };
+  const handleDelete = () => {
+    setShowAlertClose(true);
+  };
 
   return (
     <Card>
@@ -15,14 +68,20 @@ export const InputForm = () => {
           <Col>
             <Form>
               <Form.Group className="mb-3" controlId="noteTitle">
-                <Form.Control type="text" placeholder="Enter title" value="" />
+                <Form.Control
+                  type="text"
+                  placeholder="Enter title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
               </Form.Group>
               <Form.Group className="mb-3" controlId="noteDescription">
                 <Form.Control
                   as="textarea"
                   rows={3}
                   placeholder="Enter description"
-                  value=""
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
                 />
               </Form.Group>
             </Form>
@@ -30,29 +89,42 @@ export const InputForm = () => {
         </Row>
         <Row>
           <Col xs={12} md={12} className="text-end">
-            <ButtonGroup />
-            <Button variant="success">Save Note</Button>
+            {isEditing ? (
+              <div className="button-group">
+                <Button
+                  variant="danger"
+                  className="delete-button"
+                  onClick={handleDelete}
+                >
+                  Delete Note
+                </Button>
+                <Button
+                  variant="success"
+                  className="edit-button"
+                  onClick={handleEdit}
+                >
+                  Save Note
+                </Button>
+              </div>
+            ) : (
+              <Button variant="success" onClick={handleAdd}>
+                Save Note
+              </Button>
+            )}
 
             <CustomModal
               title="No title"
               description="Title is needed"
-              show={show}
-              setShow={setShow}
+              show={showAlertTitle}
+              setShow={setShowAlertTitle}
+              onClick={() => {}}
             />
             <CustomModal
               title="Delet Note"
               description="Are you sure you want to delet note?"
-              show={show}
-              setShow={setShow}
-            />
-          </Col>
-          <Col xs={12} md={12} className="text-end">
-            <Button variant="success">Save Note</Button>
-            <CustomModal
-              title="No title"
-              description="Title is needed"
-              show={show}
-              setShow={setShow}
+              show={showAlertClose}
+              setShow={setShowAlertClose}
+              onClick={onDeleteNote}
             />
           </Col>
         </Row>
