@@ -1,21 +1,21 @@
 import { Button, Card } from "react-bootstrap";
-import { useState } from "react";
-import "./Aside.scss";
 import { NoteList } from "components/NoteList/NoteList.tsx";
+import { useNotes } from "hooks/useNotes.tsx";
+import "./Aside.scss";
 
 export const Aside = () => {
-  const [showAddForm, setShowAddForm] = useState(false);
+  const { state, dispatch } = useNotes();
   return (
     <Card>
       <Card.Header>
         <Button
           className="m-2"
-          onClick={() => {
-            setShowAddForm((prev) => !prev);
-          }}
-          variant={showAddForm ? "danger" : "success"}
+          onClick={() =>
+            dispatch({ type: "SET_SHOW_ADD_FORM", payload: !state.showAddForm })
+          }
+          variant={state.showAddForm ? "danger" : "success"}
         >
-          {showAddForm ? "Close Add Note Form" : "Add Note"}
+          {state.showAddForm ? "Close Add Note Form" : "Add Note"}
         </Button>
       </Card.Header>
       <Card.Body>
