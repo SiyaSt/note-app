@@ -1,13 +1,91 @@
 import { Col, Row } from "react-bootstrap";
 import { Aside } from "components/Aside/Aside.tsx";
+import { useEffect, useState } from "react";
+import { Note } from "shared/types/note.ts";
+import { InputForm } from "components/InputForm/InputForm.tsx";
+import { NoteItem } from "components/NoteItem/NoteItem.tsx";
+import { formatDate } from "shared/utils/FormatDate.ts";
 
 export const Main = () => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [selectedNote, setSelectedNote] = useState<Note | null>(null);
+  const [notes, setNotes] = useState<Note[]>(
+    JSON.parse(localStorage.getItem("notes") || "[]"),
+  );
+
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
+
+  const handleAddNote = (title: string, description: string) => {
+    const newNote = {
+      id: Date.now(),
+      title,
+      description,
+      date: formatDate(new Date()),
+    };
+    setNotes([...notes, newNote]);
+    setShowAddForm(false);
+  };
+
+  const handleEditNote = (title: string, description: string) => {
+    if (selectedNote) {
+      setNotes(
+        notes.map((note) =>
+          note.id === selectedNote.id
+            ? { ...note, title, description, date: formatDate(new Date()) }
+            : note,
+        ),
+      );
+    }
+    setIsEditing(false);
+    setShowAddForm(false);
+    setSelectedNote(null);
+  };
+
+  const handleDeleteNote = () => {
+    if (selectedNote) {
+      setNotes(notes.filter((note) => note.id !== selectedNote.id));
+      setSelectedNote(null);
+      setIsEditing(false);
+    }
+  };
+
+  const handleSelectNote = (note: Note) => {
+    setSelectedNote(note);
+  };
+
   return (
     <Row className="p-3 m-3">
       <Col xs={12} md={3}>
-        <Aside />
+        <Aside
+          notes={notes}
+          selectedNote={selectedNote}
+          onSelectNote={handleSelectNote}
+          setShowAddForm={setShowAddForm}
+          showAddForm={showAddForm}
+        />
       </Col>
-      <Col xs={12} md={9}></Col>
+      <Col xs={12} md={9}>
+        {(showAddForm || isEditing) && (
+          <InputForm
+            isEditing={isEditing}
+            onAddNode={handleAddNote}
+            onEditNode={handleEditNote}
+            onDeleteNote={handleDeleteNote}
+            initialTitle={selectedNote?.title || ""}
+            initialDescription={selectedNote?.description || ""}
+          />
+        )}
+        {!showAddForm && !isEditing && selectedNote && (
+          <NoteItem
+            note={selectedNote}
+            setIsEditing={setIsEditing}
+            onDeleteNote={handleDeleteNote}
+          />
+        )}
+      </Col>
     </Row>
   );
 };

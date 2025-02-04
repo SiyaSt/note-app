@@ -1,17 +1,30 @@
 import { Button, Card } from "react-bootstrap";
-import { useState } from "react";
+import { FC } from "react";
 import "./Aside.scss";
 import { NoteList } from "components/NoteList/NoteList.tsx";
+import { Note } from "shared/types/note.ts";
 
-export const Aside = () => {
-  const [showAddForm, setShowAddForm] = useState(false);
+interface AsideProps {
+  notes: Note[];
+  selectedNote: Note | null;
+  showAddForm: boolean;
+  setShowAddForm: (showAddForm: boolean) => void;
+  onSelectNote: (note: Note) => void;
+}
+export const Aside: FC<AsideProps> = ({
+  notes,
+  showAddForm,
+  setShowAddForm,
+  onSelectNote,
+  selectedNote,
+}) => {
   return (
     <Card>
       <Card.Header>
         <Button
           className="m-2"
           onClick={() => {
-            setShowAddForm((prev) => !prev);
+            setShowAddForm(!showAddForm);
           }}
           variant={showAddForm ? "danger" : "success"}
         >
@@ -19,7 +32,11 @@ export const Aside = () => {
         </Button>
       </Card.Header>
       <Card.Body>
-        <NoteList />
+        <NoteList
+          notes={notes}
+          onSelectNote={onSelectNote}
+          selectedNote={selectedNote}
+        />
       </Card.Body>
     </Card>
   );
