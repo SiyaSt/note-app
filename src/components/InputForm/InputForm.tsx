@@ -2,7 +2,7 @@ import { Button, Card, Form } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
 import { CustomModal } from "components/CustomModal/CustomModal.tsx";
 import { FC, useEffect, useState } from "react";
-import "./InputForm.scss";
+import { ButtonGroup } from "components/ButtonGroup/ButtonGroup.tsx";
 
 interface InputFormProps {
   isEditing: boolean;
@@ -90,22 +90,12 @@ export const InputForm: FC<InputFormProps> = ({
         <Row>
           <Col xs={12} md={12} className="text-end">
             {isEditing ? (
-              <div className="button-group">
-                <Button
-                  variant="danger"
-                  className="delete-button"
-                  onClick={handleDelete}
-                >
-                  Delete Note
-                </Button>
-                <Button
-                  variant="success"
-                  className="edit-button"
-                  onClick={handleEdit}
-                >
-                  Save Note
-                </Button>
-              </div>
+              <ButtonGroup
+                textButtonFirst="Delete Note"
+                textButtonSecond="Save Note"
+                onClickFirst={handleDelete}
+                onClickSecond={handleEdit}
+              />
             ) : (
               <Button variant="success" onClick={handleAdd}>
                 Save Note
