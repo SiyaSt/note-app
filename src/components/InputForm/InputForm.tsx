@@ -2,6 +2,7 @@ import { Button, Card, Form } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
 import { CustomModal } from "components/CustomModal/CustomModal.tsx";
 import { useState } from "react";
+import { ButtonGroup } from "components/ButtonGroup/ButtonGroup.tsx";
 
 export const InputForm = () => {
   const [show, setShow] = useState(false);
@@ -28,6 +29,23 @@ export const InputForm = () => {
           </Col>
         </Row>
         <Row>
+          <Col xs={12} md={12} className="text-end">
+            <ButtonGroup />
+            <Button variant="success">Save Note</Button>
+
+            <CustomModal
+              title="No title"
+              description="Title is needed"
+              show={show}
+              setShow={setShow}
+            />
+            <CustomModal
+              title="Delet Note"
+              description="Are you sure you want to delet note?"
+              show={show}
+              setShow={setShow}
+            />
+          </Col>
           <Col xs={12} md={12} className="text-end">
             <Button variant="success">Save Note</Button>
             <CustomModal

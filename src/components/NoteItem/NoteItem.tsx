@@ -1,7 +1,8 @@
-import { Button, Card } from "react-bootstrap";
-import "./NoteItem.scss";
+import { Card } from "react-bootstrap";
 import { CustomModal } from "components/CustomModal/CustomModal.tsx";
 import { useState } from "react";
+import { ButtonGroup } from "components/ButtonGroup/ButtonGroup.tsx";
+import "./NoteItem.scss";
 
 export const NoteItem = () => {
   const [show, setShow] = useState(false);
@@ -13,20 +14,13 @@ export const NoteItem = () => {
       </Card.Header>
       <Card.Body className="note-item-body">
         <small className="text-muted last-edited">Last edited: {}</small>
-        <div className="button-group">
-          <Button variant="danger" className="delete-button">
-            Delete Note
-          </Button>
-          <Button variant="success" className="edit-button">
-            Edit Note
-          </Button>
-          <CustomModal
-            title="Delet Note"
-            description="Are you sure you want to delet note?"
-            show={show}
-            setShow={setShow}
-          />
-        </div>
+        <ButtonGroup />
+        <CustomModal
+          title="Delet Note"
+          description="Are you sure you want to delet note?"
+          show={show}
+          setShow={setShow}
+        />
       </Card.Body>
     </Card>
   );

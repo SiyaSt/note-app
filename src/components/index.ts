@@ -5,3 +5,4 @@ export { InputForm } from "./InputForm/InputForm";
 export { NoteItem } from "./NoteItem/NoteItem";
 export { NoteList } from "./NoteList/NoteList";
 export { CustomModal } from "./CustomModal/CustomModal";
+export { ButtonGroup } from "./ButtonGroup/ButtonGroup";
