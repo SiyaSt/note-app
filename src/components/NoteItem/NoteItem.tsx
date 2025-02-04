@@ -1,8 +1,9 @@
-import { Button, Card } from "react-bootstrap";
-import "./NoteItem.scss";
+import { Card } from "react-bootstrap";
 import { CustomModal } from "components/CustomModal/CustomModal.tsx";
 import { FC, useState } from "react";
 import { Note } from "shared/types/note.ts";
+import { ButtonGroup } from "components/ButtonGroup/ButtonGroup.tsx";
+import "./NoteItem.scss";
 
 interface NoteItemProps {
   note: Note;
@@ -27,31 +28,21 @@ export const NoteItem: FC<NoteItemProps> = ({
           Last edited: {note.date}
         </small>
         <p>{note.description}</p>
-        <div className="button-group">
-          <Button
-            variant="danger"
-            className="delete-button"
-            onClick={() => setShow(true)}
-          >
-            Delete Note
-          </Button>
-          <Button
-            variant="success"
-            className="edit-button"
-            onClick={() => {
-              setIsEditing(true);
-            }}
-          >
-            Edit Note
-          </Button>
-          <CustomModal
-            title="Delet Note"
-            description="Are you sure you want to delet note?"
-            show={show}
-            setShow={setShow}
-            onClick={onDeleteNote}
-          />
-        </div>
+        <ButtonGroup
+          textButtonFirst="Delete Note"
+          textButtonSecond="Edit Note"
+          onClickFirst={() => setShow(true)}
+          onClickSecond={() => {
+            setIsEditing(true);
+          }}
+        />
+        <CustomModal
+          title="Delet Note"
+          description="Are you sure you want to delet note?"
+          show={show}
+          setShow={setShow}
+          onClick={onDeleteNote}
+        />
       </Card.Body>
     </Card>
   );
