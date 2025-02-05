@@ -1,8 +1,8 @@
 import { Button, Card } from "react-bootstrap";
 import { FC } from "react";
+import { NoteList } from "components/NoteList/NoteList";
+import { Note } from "shared/types/note";
 import "./Aside.scss";
-import { NoteList } from "components/NoteList/NoteList.tsx";
-import { Note } from "shared/types/note.ts";
 
 interface AsideProps {
   notes: Note[];
