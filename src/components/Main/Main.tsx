@@ -1,10 +1,10 @@
 import { Col, Row } from "react-bootstrap";
 import { Aside } from "components/Aside/Aside.tsx";
 import { useEffect, useState } from "react";
-import { Note } from "shared/types/note.ts";
-import { InputForm } from "components/InputForm/InputForm.tsx";
-import { NoteItem } from "components/NoteItem/NoteItem.tsx";
-import { formatDate } from "shared/utils/FormatDate.ts";
+import { Note } from "shared/types/note";
+import { InputForm } from "components/InputForm/InputForm";
+import { NoteItem } from "components/NoteItem/NoteItem";
+import { formatDate } from "shared/utils/FormatDate";
 
 export const Main = () => {
   const [isEditing, setIsEditing] = useState(false);

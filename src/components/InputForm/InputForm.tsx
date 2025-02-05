@@ -1,8 +1,8 @@
 import { Button, Card, Form } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
-import { CustomModal } from "components/CustomModal/CustomModal.tsx";
+import { CustomModal } from "components/CustomModal/CustomModal";
 import { FC, useEffect, useState } from "react";
-import { ButtonGroup } from "components/ButtonGroup/ButtonGroup.tsx";
+import { ButtonGroup } from "components/ButtonGroup/ButtonGroup";
 
 interface InputFormProps {
   isEditing: boolean;

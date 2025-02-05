@@ -1,5 +1,5 @@
 import { ListGroup } from "react-bootstrap";
-import { Note } from "shared/types/note.ts";
+import { Note } from "shared/types/note";
 import { FC } from "react";
 import "./NoteList.scss";
 
