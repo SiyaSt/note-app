@@ -1,8 +1,8 @@
 import { Card } from "react-bootstrap";
-import { CustomModal } from "components/CustomModal/CustomModal.tsx";
+import { CustomModal } from "components/CustomModal/CustomModal";
 import { useState } from "react";
-import { ButtonGroup } from "components/ButtonGroup/ButtonGroup.tsx";
-import { useNotes } from "hooks/useNotes.tsx";
+import { ButtonGroup } from "components/ButtonGroup/ButtonGroup";
+import { useNotes } from "hooks/useNotes";
 import "./NoteItem.scss";
 
 export const NoteItem = () => {

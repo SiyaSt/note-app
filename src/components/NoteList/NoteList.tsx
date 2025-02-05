@@ -1,5 +1,5 @@
 import { ListGroup } from "react-bootstrap";
-import { useNotes } from "hooks/useNotes.tsx";
+import { useNotes } from "hooks/useNotes";
 
 export const NoteList = () => {
   const { state, dispatch } = useNotes();

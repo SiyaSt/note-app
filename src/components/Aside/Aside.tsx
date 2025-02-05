@@ -1,6 +1,6 @@
 import { Button, Card } from "react-bootstrap";
-import { NoteList } from "components/NoteList/NoteList.tsx";
-import { useNotes } from "hooks/useNotes.tsx";
+import { NoteList } from "components/NoteList/NoteList";
+import { useNotes } from "hooks/useNotes";
 import "./Aside.scss";
 
 export const Aside = () => {

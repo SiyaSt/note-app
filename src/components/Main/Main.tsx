@@ -1,8 +1,8 @@
 import { Col, Row } from "react-bootstrap";
-import { Aside } from "components/Aside/Aside.tsx";
-import { useNotes } from "hooks/useNotes.tsx";
-import { NoteItem } from "components/NoteItem/NoteItem.tsx";
-import { InputForm } from "components/InputForm/InputForm.tsx";
+import { Aside } from "components/Aside/Aside";
+import { useNotes } from "hooks/useNotes";
+import { NoteItem } from "components/NoteItem/NoteItem";
+import { InputForm } from "components/InputForm/InputForm";
 
 export const Main = () => {
   const { state } = useNotes();

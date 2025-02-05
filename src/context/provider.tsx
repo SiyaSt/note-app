@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useReducer } from "react";
-import { notesReducer } from "context/reducer.ts";
-import { NotesContext } from "context/context.tsx";
+import { notesReducer } from "context/reducer";
+import { NotesContext } from "context/context";
 
 export const NotesProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(notesReducer, {
@@ -14,5 +14,9 @@ export const NotesProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem("notes", JSON.stringify(state.notes));
   }, [state.notes]);
 
-  return <NotesContext.Provider value={{ state, dispatch }}>{children}</NotesContext.Provider>;
+  return (
+    <NotesContext.Provider value={{ state, dispatch }}>
+      {children}
+    </NotesContext.Provider>
+  );
 };

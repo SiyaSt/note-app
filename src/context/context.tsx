@@ -1,6 +1,6 @@
 import { createContext, Dispatch } from "react";
-import { State } from "context/reducer.ts";
-import { Action } from "context/actions.ts";
+import { State } from "context/reducer";
+import { Action } from "context/actions";
 
 export interface NotesContextType {
   state: State;
