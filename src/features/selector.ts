@@ -1,3 +1,3 @@
-import { RootState } from "store/store.ts";
+import { RootState } from "store/store";
 
 export const selectNotes = (state: RootState) => state;

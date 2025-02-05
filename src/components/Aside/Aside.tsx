@@ -1,8 +1,8 @@
 import { Button, Card } from "react-bootstrap";
-import { NoteList } from "components/NoteList/NoteList.tsx";
-import { useAppDispatch, useAppSelector } from "hooks/reduxHooks.ts";
-import { selectNotes } from "features/selector.ts";
-import { setShowAddForm } from "features/actions.ts";
+import { NoteList } from "components";
+import { useAppDispatch, useAppSelector } from "hooks/reduxHooks";
+import { selectNotes } from "features/selector";
+import { setShowAddForm } from "features/actions";
 import "./Aside.scss";
 
 export const Aside = () => {

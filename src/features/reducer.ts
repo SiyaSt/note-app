@@ -1,5 +1,5 @@
-import { Action } from "features/actions.ts";
-import { Note } from "shared/types/note.ts";
+import { Action } from "features/actions";
+import { Note } from "shared/types/note";
 
 export interface State {
   notes: Note[];

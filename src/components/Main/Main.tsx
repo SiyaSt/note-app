@@ -1,9 +1,7 @@
 import { Col, Row } from "react-bootstrap";
-import { Aside } from "components/Aside/Aside.tsx";
-import { InputForm } from "components/InputForm/InputForm.tsx";
-import { NoteItem } from "components/NoteItem/NoteItem.tsx";
-import { useAppSelector } from "hooks/reduxHooks.ts";
-import { selectNotes } from "features/selector.ts";
+import { Aside, InputForm, NoteItem } from "components";
+import { useAppSelector } from "hooks/reduxHooks";
+import { selectNotes } from "features/selector";
 
 export const Main = () => {
   const { showAddForm, isEditing, selectedNote } = useAppSelector(selectNotes);

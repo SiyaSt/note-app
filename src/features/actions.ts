@@ -1,4 +1,4 @@
-import { Note } from "shared/types/note.ts";
+import { Note } from "shared/types/note";
 
 export type Action =
   | { type: "SET_EDITING"; payload: boolean }

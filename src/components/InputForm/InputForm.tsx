@@ -1,13 +1,12 @@
 import { Button, Card, Form } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
-import { CustomModal } from "components/CustomModal/CustomModal.tsx";
+import { CustomModal, ButtonGroup } from "components";
 import { useEffect, useState } from "react";
-import { ButtonGroup } from "components/ButtonGroup/ButtonGroup.tsx";
-import { Note } from "shared/types/note.ts";
-import { formatDate } from "shared/utils/FormatDate.ts";
-import { useAppDispatch, useAppSelector } from "hooks/reduxHooks.ts";
-import { selectNotes } from "features/selector.ts";
-import { addNote, deleteNote, editNote } from "features/actions.ts";
+import { Note } from "shared/types/note";
+import { formatDate } from "shared/utils/FormatDate";
+import { useAppDispatch, useAppSelector } from "hooks/reduxHooks";
+import { selectNotes } from "features/selector";
+import { addNote, deleteNote, editNote } from "features/actions";
 
 export const InputForm = () => {
   const { selectedNote, isEditing } = useAppSelector(selectNotes);

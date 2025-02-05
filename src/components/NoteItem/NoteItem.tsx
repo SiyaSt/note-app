@@ -1,10 +1,9 @@
 import { Card } from "react-bootstrap";
-import { CustomModal } from "components/CustomModal/CustomModal.tsx";
+import { CustomModal, ButtonGroup } from "components";
 import { useState } from "react";
-import { ButtonGroup } from "components/ButtonGroup/ButtonGroup.tsx";
-import { useAppDispatch, useAppSelector } from "hooks/reduxHooks.ts";
-import { selectNotes } from "features/selector.ts";
-import { deleteNote, setEditing } from "features/actions.ts";
+import { useAppDispatch, useAppSelector } from "hooks/reduxHooks";
+import { selectNotes } from "features/selector";
+import { deleteNote, setEditing } from "features/actions";
 import "./NoteItem.scss";
 
 export const NoteItem = () => {
