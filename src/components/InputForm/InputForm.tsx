@@ -1,8 +1,7 @@
 import { Button, Card, Form } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
-import { CustomModal } from "components/CustomModal/CustomModal";
+import { CustomModal, ButtonGroup } from "components";
 import { useEffect, useState } from "react";
-import { ButtonGroup } from "components/ButtonGroup/ButtonGroup";
 import { useAppDispatch, useAppSelector } from "hooks/reduxHooks";
 import { selectNotes } from "features/selector";
 import { addNote, deleteNote, editNote } from "features/slice";

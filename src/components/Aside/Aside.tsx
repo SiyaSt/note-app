@@ -1,5 +1,5 @@
 import { Button, Card } from "react-bootstrap";
-import { NoteList } from "components/NoteList/NoteList";
+import { NoteList } from "components";
 import { useAppDispatch, useAppSelector } from "hooks/reduxHooks";
 import { selectNotes } from "features/selector";
 import { setShowAddForm } from "features/slice";

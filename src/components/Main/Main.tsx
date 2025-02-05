@@ -1,7 +1,5 @@
 import { Col, Row } from "react-bootstrap";
-import { Aside } from "components/Aside/Aside";
-import { InputForm } from "components/InputForm/InputForm";
-import { NoteItem } from "components/NoteItem/NoteItem";
+import { Aside, InputForm, NoteItem } from "components";
 import { useAppSelector } from "hooks/reduxHooks";
 import { selectNotes } from "features/selector";
 
