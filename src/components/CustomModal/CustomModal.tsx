@@ -6,6 +6,7 @@ interface CustomModalProps {
   description: string;
   show: boolean;
   setShow: (show: boolean) => void;
+  onClick: () => void;
 }
 
 export const CustomModal: FC<CustomModalProps> = ({
@@ -13,8 +14,13 @@ export const CustomModal: FC<CustomModalProps> = ({
   setShow,
   title,
   description,
+  onClick,
 }) => {
   const handleClose = () => setShow(false);
+  const handleSave = () => {
+    onClick();
+    setShow(false);
+  };
   return (
     <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
       <Modal.Header closeButton>
@@ -25,7 +31,7 @@ export const CustomModal: FC<CustomModalProps> = ({
         <Button variant="secondary" onClick={handleClose}>
           Close
         </Button>
-        <Button variant="primary" onClick={handleClose}>
+        <Button variant="primary" onClick={handleSave}>
           Okay
         </Button>
       </Modal.Footer>

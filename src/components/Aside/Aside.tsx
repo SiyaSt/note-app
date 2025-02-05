@@ -1,21 +1,23 @@
 import { Button, Card } from "react-bootstrap";
-import { useState } from "react";
+import { NoteList } from "components/NoteList/NoteList";
+import { useAppDispatch, useAppSelector } from "hooks/reduxHooks";
+import { selectNotes } from "features/selector";
+import { setShowAddForm } from "features/slice";
 import "./Aside.scss";
-import { NoteList } from "components/NoteList/NoteList.tsx";
 
 export const Aside = () => {
-  const [showAddForm, setShowAddForm] = useState(false);
+  const dispatch = useAppDispatch();
+  const { notes } = useAppSelector(selectNotes);
+
   return (
     <Card>
       <Card.Header>
         <Button
           className="m-2"
-          onClick={() => {
-            setShowAddForm((prev) => !prev);
-          }}
-          variant={showAddForm ? "danger" : "success"}
+          onClick={() => dispatch(setShowAddForm(!notes.showAddForm))}
+          variant={notes.showAddForm ? "danger" : "success"}
         >
-          {showAddForm ? "Close Add Note Form" : "Add Note"}
+          {notes.showAddForm ? "Close Add Note Form" : "Add Note"}
         </Button>
       </Card.Header>
       <Card.Body>
