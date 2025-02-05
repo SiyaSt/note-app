@@ -1,6 +1,6 @@
 import { Button, Card } from "react-bootstrap";
 import { FC } from "react";
-import { NoteList } from "components/NoteList/NoteList";
+import { NoteList } from "components";
 import { Note } from "shared/types/note";
 import "./Aside.scss";
 
