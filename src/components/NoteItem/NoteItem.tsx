@@ -2,8 +2,8 @@ import { Card } from "react-bootstrap";
 import { CustomModal } from "components/CustomModal/CustomModal.tsx";
 import { useState } from "react";
 import { ButtonGroup } from "components/ButtonGroup/ButtonGroup.tsx";
-import "./NoteItem.scss";
 import { useNotes } from "hooks/useNotes.tsx";
+import "./NoteItem.scss";
 
 export const NoteItem = () => {
   const [show, setShow] = useState(false);

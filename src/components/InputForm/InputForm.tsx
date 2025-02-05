@@ -8,7 +8,7 @@ import { Note } from "shared/types/note.ts";
 import { formatDate } from "shared/utils/FormatDate.ts";
 
 export const InputForm = () => {
-  const { state, dispatch } = useNotes(); // Получаем состояние и dispatch из контекста
+  const { state, dispatch } = useNotes();
   const { selectedNote, isEditing } = state;
 
   const [showAlertTitle, setShowAlertTitle] = useState(false);
