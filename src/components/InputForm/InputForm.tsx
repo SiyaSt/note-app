@@ -1,8 +1,7 @@
 import { Button, Card, Form } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
-import { CustomModal } from "components/CustomModal/CustomModal";
+import { CustomModal, ButtonGroup } from "components";
 import { useEffect, useState } from "react";
-import { ButtonGroup } from "components/ButtonGroup/ButtonGroup";
 import { useNotes } from "hooks/useNotes";
 import { Note } from "shared/types/note";
 import { formatDate } from "shared/utils/FormatDate";

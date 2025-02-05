@@ -1,7 +1,6 @@
 import { Card } from "react-bootstrap";
-import { CustomModal } from "components/CustomModal/CustomModal";
+import { CustomModal, ButtonGroup } from "components";
 import { useState } from "react";
-import { ButtonGroup } from "components/ButtonGroup/ButtonGroup";
 import { useNotes } from "hooks/useNotes";
 import "./NoteItem.scss";
 
