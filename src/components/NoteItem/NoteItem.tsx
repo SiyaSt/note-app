@@ -48,6 +48,7 @@ export const NoteItem: FC<NoteItemProps> = ({
           title={"Delete Note"}
           description={"Are you sure you want to delete note?"}
           show={show}
+          close={true}
           onCancel={handleCancel}
           onConfirm={handleConfirm}
         />

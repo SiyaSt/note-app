@@ -5,12 +5,14 @@ interface CustomModalProps {
   title: string;
   description: string;
   show: boolean;
+  close: boolean;
   onCancel: () => void;
   onConfirm?: () => void;
 }
 
 export const CustomModal: FC<CustomModalProps> = ({
   show,
+  close,
   title,
   description,
   onCancel,
@@ -23,6 +25,11 @@ export const CustomModal: FC<CustomModalProps> = ({
       </Modal.Header>
       <Modal.Body>{description}</Modal.Body>
       <Modal.Footer>
+        {close && (
+          <Button variant="secondary" onClick={onCancel}>
+            Close
+          </Button>
+        )}
         <Button variant="primary" onClick={onConfirm}>
           Okay
         </Button>
