@@ -4,7 +4,8 @@ import { useAppSelector } from "hooks/reduxHooks";
 import { selectNotes } from "features/selector";
 
 export const Main = () => {
-  const { showAddForm, isEditing, selectedNote } = useAppSelector(selectNotes);
+  const { isAddFormOpen, isEditing, selectedNote } =
+    useAppSelector(selectNotes);
 
   return (
     <Row className="p-3 m-3">
@@ -12,8 +13,8 @@ export const Main = () => {
         <Aside />
       </Col>
       <Col xs={12} md={9}>
-        {(showAddForm || isEditing) && <InputForm />}
-        {!showAddForm && !isEditing && selectedNote && <NoteItem />}
+        {(isAddFormOpen || isEditing) && <InputForm />}
+        {!isAddFormOpen && !isEditing && selectedNote && <NoteItem />}
       </Col>
     </Row>
   );

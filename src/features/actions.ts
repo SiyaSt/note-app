@@ -2,7 +2,7 @@ import { Note } from "shared/types/note";
 
 export type Action =
   | { type: "SET_EDITING"; payload: boolean }
-  | { type: "SET_SHOW_ADD_FORM"; payload: boolean }
+  | { type: "SET_ADDING"; payload: boolean }
   | { type: "SET_SELECTED_NOTE"; payload: Note | null }
   | { type: "ADD_NOTE"; payload: Note }
   | { type: "EDIT_NOTE"; payload: Note }
@@ -12,9 +12,9 @@ export const setEditing = (isEditing: boolean): Action => ({
   type: "SET_EDITING",
   payload: isEditing,
 });
-export const setShowAddForm = (show: boolean): Action => ({
-  type: "SET_SHOW_ADD_FORM",
-  payload: show,
+export const setAdding = (isAdding: boolean): Action => ({
+  type: "SET_ADDING",
+  payload: isAdding,
 });
 export const setSelectedNote = (note: Note | null): Action => ({
   type: "SET_SELECTED_NOTE",

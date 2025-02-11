@@ -5,13 +5,13 @@ export interface State {
   notes: Note[];
   selectedNote: Note | null;
   isEditing: boolean;
-  showAddForm: boolean;
+  isAddFormOpen: boolean;
 }
 
 const initialState: State = {
   notes: JSON.parse(<string>localStorage.getItem("notes")) || [],
   selectedNote: null,
-  showAddForm: false,
+  isAddFormOpen: false,
   isEditing: false,
 };
 
@@ -21,7 +21,7 @@ export const notesReducer = (state = initialState, action: Action): State => {
       return {
         ...state,
         notes: [...state.notes, action.payload],
-        showAddForm: false,
+        isAddFormOpen: false,
       };
     case "EDIT_NOTE":
       return {
@@ -33,7 +33,7 @@ export const notesReducer = (state = initialState, action: Action): State => {
         ),
         selectedNote: null,
         isEditing: false,
-        showAddForm: false,
+        isAddFormOpen: false,
       };
     case "DELETE_NOTE":
       return {
@@ -44,10 +44,10 @@ export const notesReducer = (state = initialState, action: Action): State => {
       };
     case "SET_SELECTED_NOTE":
       return { ...state, selectedNote: action.payload };
-    case "SET_SHOW_ADD_FORM":
+    case "SET_ADDING":
       return {
         ...state,
-        showAddForm: action.payload,
+        isAddFormOpen: action.payload,
         isEditing: false,
         selectedNote: null,
       };
