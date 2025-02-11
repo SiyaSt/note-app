@@ -6,13 +6,13 @@ export interface State {
   notes: Note[];
   selectedNote: Note | null;
   isEditing: boolean;
-  showAddForm: boolean;
+  isAddFormOpen: boolean;
 }
 
 const initialState: State = {
   notes: JSON.parse(localStorage.getItem("notes") || "[]"),
   selectedNote: null,
-  showAddForm: false,
+  isAddFormOpen: false,
   isEditing: false,
 };
 
@@ -32,7 +32,7 @@ const notesSlice = createSlice({
       };
       state.notes.push(newNote);
       localStorage.setItem("notes", JSON.stringify(state.notes));
-      state.showAddForm = false;
+      state.isAddFormOpen = false;
     },
     editNote: (
       state,
@@ -47,7 +47,7 @@ const notesSlice = createSlice({
         localStorage.setItem("notes", JSON.stringify(state.notes));
         state.selectedNote = null;
         state.isEditing = false;
-        state.showAddForm = false;
+        state.isAddFormOpen = false;
       }
     },
     deleteNote: (state) => {
@@ -63,8 +63,8 @@ const notesSlice = createSlice({
     setSelectedNote: (state, action: PayloadAction<Note | null>) => {
       state.selectedNote = action.payload;
     },
-    setShowAddForm: (state, action: PayloadAction<boolean>) => {
-      state.showAddForm = action.payload;
+    setAdding: (state, action: PayloadAction<boolean>) => {
+      state.isAddFormOpen = action.payload;
       state.isEditing = false;
       state.selectedNote = null;
     },
@@ -79,7 +79,7 @@ export const {
   editNote,
   deleteNote,
   setSelectedNote,
-  setShowAddForm,
+  setAdding,
   setEditing,
 } = notesSlice.actions;
 export default notesSlice.reducer;

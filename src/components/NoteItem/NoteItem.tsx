@@ -11,8 +11,13 @@ export const NoteItem = () => {
   const { notes } = useAppSelector(selectNotes);
   const dispatch = useAppDispatch();
 
-  const confirmDelete = () => {
+  const handleCancel = () => {
+    setShow(false);
+  };
+
+  const handleConfirmDelete = () => {
     dispatch(deleteNote());
+    setShow(false);
   };
   return (
     <Card>
@@ -36,8 +41,9 @@ export const NoteItem = () => {
           title="Delet Note"
           description="Are you sure you want to delet note?"
           show={show}
-          setShow={setShow}
-          onClick={confirmDelete}
+          onCancel={handleCancel}
+          onConfirm={handleConfirmDelete}
+          close={false}
         />
       </Card.Body>
     </Card>

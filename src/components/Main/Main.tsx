@@ -12,8 +12,8 @@ export const Main = () => {
         <Aside />
       </Col>
       <Col xs={12} md={9}>
-        {(notes.showAddForm || notes.isEditing) && <InputForm />}
-        {!notes.showAddForm && !notes.isEditing && notes.selectedNote && (
+        {(notes.isAddFormOpen || notes.isEditing) && <InputForm />}
+        {!notes.isAddFormOpen && !notes.isEditing && notes.selectedNote && (
           <NoteItem />
         )}
       </Col>
