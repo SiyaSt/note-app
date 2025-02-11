@@ -32,8 +32,8 @@ export const NoteItem = () => {
           }}
         />
         <CustomModal
-          title="Delet Note"
-          description="Are you sure you want to delet note?"
+          title={"Delete Note"}
+          description={"Are you sure you want to delete note?"}
           show={show}
           setShow={setShow}
           onClick={confirmDelete}

@@ -118,15 +118,15 @@ export const InputForm = () => {
             )}
 
             <CustomModal
-              title="No title"
-              description="Title is needed"
+              title={"No title"}
+              description={"Title is needed"}
               show={showAlertTitle}
               setShow={setShowAlertTitle}
               onClick={() => {}}
             />
             <CustomModal
-              title="Delete Note"
-              description="Are you sure you want to delete this note?"
+              title={"Delete Note"}
+              description={"Are you sure you want to delete this note?"}
               show={showAlertClose}
               setShow={setShowAlertClose}
               onClick={confirmDelete}
