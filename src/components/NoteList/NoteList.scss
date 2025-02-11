@@ -1,0 +1,16 @@
+.custom-note-item {
+  .note-item {
+    color: #2e81db;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      color: #2e81db;
+    }
+
+    &.active {
+      color: white;
+      background-color: #2e81db;
+    }
+  }
+}

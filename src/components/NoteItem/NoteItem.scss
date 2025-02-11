@@ -1,0 +1,10 @@
+.note-item-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .last-edited {
+    text-align: center;
+    margin-bottom: auto;
+  }
+}
