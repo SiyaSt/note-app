@@ -3,7 +3,6 @@ import { NoteList } from "components";
 import { useAppDispatch, useAppSelector } from "hooks/reduxHooks";
 import { selectNotes } from "features/selector";
 import { setShowAddForm } from "features/actions";
-import "./Aside.scss";
 
 export const Aside = () => {
   const dispatch = useAppDispatch();

@@ -2,6 +2,7 @@ import { ListGroup } from "react-bootstrap";
 import { useAppDispatch, useAppSelector } from "hooks/reduxHooks.ts";
 import { selectNotes } from "features/selector.ts";
 import { setSelectedNote } from "features/actions.ts";
+import "./NoteList.scss";
 
 export const NoteList = () => {
   const { notes, selectedNote } = useAppSelector(selectNotes);
