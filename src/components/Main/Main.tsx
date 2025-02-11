@@ -6,7 +6,7 @@ import { formatDate } from "shared/utils/FormatDate";
 
 export const Main = () => {
   const [isEditing, setIsEditing] = useState(false);
-  const [isAddForm, setIsAddForm] = useState(false);
+  const [isAddFormOpen, setIsAddFormOpen] = useState(false);
   const [selectedNote, setSelectedNote] = useState<Note | null>(null);
   const [notes, setNotes] = useState<Note[]>(
     JSON.parse(localStorage.getItem("notes") || "[]"),
@@ -24,7 +24,7 @@ export const Main = () => {
       date: formatDate(new Date()),
     };
     setNotes([...notes, newNote]);
-    setIsAddForm(false);
+    setIsAddFormOpen(false);
   };
 
   const handleEditNote = (title: string, description: string) => {
@@ -38,7 +38,7 @@ export const Main = () => {
       );
     }
     setIsEditing(false);
-    setIsAddForm(false);
+    setIsAddFormOpen(false);
     setSelectedNote(null);
   };
 
@@ -61,12 +61,12 @@ export const Main = () => {
           notes={notes}
           selectedNote={selectedNote}
           onSelectNote={handleSelectNote}
-          setShowAddForm={setIsAddForm}
-          showAddForm={isAddForm}
+          setShowAddForm={setIsAddFormOpen}
+          showAddForm={isAddFormOpen}
         />
       </Col>
       <Col xs={12} md={9}>
-        {(isAddForm || isEditing) && (
+        {(isAddFormOpen || isEditing) && (
           <InputForm
             isEditing={isEditing}
             onAddNode={handleAddNote}
@@ -76,7 +76,7 @@ export const Main = () => {
             initialDescription={selectedNote?.description || ""}
           />
         )}
-        {!isAddForm && !isEditing && selectedNote && (
+        {!isAddFormOpen && !isEditing && selectedNote && (
           <NoteItem
             note={selectedNote}
             setIsEditing={setIsEditing}

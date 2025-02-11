@@ -119,7 +119,7 @@ export const InputForm: FC<InputFormProps> = ({
               description={"Title is needed"}
               show={showAlertTitle}
               close={false}
-              onCancel={handleCancelTitle}
+              onConfirm={handleCancelTitle}
             />
             <CustomModal
               title={"Delete Note"}
