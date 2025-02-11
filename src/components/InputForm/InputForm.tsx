@@ -12,7 +12,7 @@ export const InputForm = () => {
   const { selectedNote, isEditing } = useAppSelector(selectNotes);
   const dispatch = useAppDispatch();
   const [showAlertTitle, setShowAlertTitle] = useState(false);
-  const [showAlertClose, setShowAlertClose] = useState(false);
+  const [showAlertDelete, setShowAlertDelete] = useState(false);
 
   const [title, setTitle] = useState(selectedNote?.title || "");
   const [description, setDescription] = useState(
@@ -66,12 +66,21 @@ export const InputForm = () => {
   };
 
   const handleDelete = () => {
-    setShowAlertClose(true);
+    setShowAlertDelete(true);
   };
 
-  const confirmDelete = () => {
+  const handleCancelTitle = () => {
+    setShowAlertTitle(false);
+  };
+
+  const handleCancelDelete = () => {
+    setShowAlertDelete(false);
+  };
+
+  const handleConfirmDelete = () => {
     if (selectedNote) {
       dispatch(deleteNote(selectedNote.id));
+      setShowAlertDelete(false);
     }
   };
 
@@ -121,15 +130,16 @@ export const InputForm = () => {
               title="No title"
               description="Title is needed"
               show={showAlertTitle}
-              setShow={setShowAlertTitle}
-              onClick={() => {}}
+              onConfirm={handleCancelTitle}
+              close={false}
             />
             <CustomModal
               title="Delete Note"
               description="Are you sure you want to delete this note?"
-              show={showAlertClose}
-              setShow={setShowAlertClose}
-              onClick={confirmDelete}
+              show={showAlertDelete}
+              onCancel={handleCancelDelete}
+              onConfirm={handleConfirmDelete}
+              close={true}
             />
           </Col>
         </Row>
