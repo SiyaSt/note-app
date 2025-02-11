@@ -6,8 +6,8 @@ interface CustomModalProps {
   description: string;
   show: boolean;
   close: boolean;
-  onCancel: () => void;
-  onConfirm?: () => void;
+  onCancel?: () => void;
+  onConfirm: () => void;
 }
 
 export const CustomModal: FC<CustomModalProps> = ({

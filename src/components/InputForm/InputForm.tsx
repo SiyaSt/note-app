@@ -130,7 +130,7 @@ export const InputForm = () => {
               title={"No title"}
               description={"Title is needed"}
               show={showAlertTitle}
-              onCancel={handleCancelTitle}
+              onConfirm={handleCancelTitle}
               close={true}
             />
             <CustomModal

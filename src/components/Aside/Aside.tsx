@@ -10,11 +10,11 @@ export const Aside = () => {
         <Button
           className="m-2"
           onClick={() =>
-            dispatch({ type: "SET_SHOW_ADD_FORM", payload: !state.showAddForm })
+            dispatch({ type: "SET_ADDING", payload: !state.isAddFormOpen })
           }
-          variant={state.showAddForm ? "danger" : "success"}
+          variant={state.isAddFormOpen ? "danger" : "success"}
         >
-          {state.showAddForm ? "Close Add Note Form" : "Add Note"}
+          {state.isAddFormOpen ? "Close Add Note Form" : "Add Note"}
         </Button>
       </Card.Header>
       <Card.Body>
