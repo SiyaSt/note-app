@@ -5,33 +5,25 @@ interface CustomModalProps {
   title: string;
   description: string;
   show: boolean;
-  setShow: (show: boolean) => void;
-  onClick: () => void;
+  onCancel: () => void;
+  onConfirm?: () => void;
 }
 
 export const CustomModal: FC<CustomModalProps> = ({
   show,
-  setShow,
   title,
   description,
-  onClick,
+  onCancel,
+  onConfirm,
 }) => {
-  const handleClose = () => setShow(false);
-  const handleSave = () => {
-    onClick();
-    setShow(false);
-  };
   return (
-    <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+    <Modal show={show} onHide={onCancel} backdrop="static" keyboard={false}>
       <Modal.Header closeButton>
         <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>{description}</Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
-        <Button variant="primary" onClick={handleSave}>
+        <Button variant="primary" onClick={onConfirm}>
           Okay
         </Button>
       </Modal.Footer>

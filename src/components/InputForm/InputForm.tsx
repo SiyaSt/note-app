@@ -21,7 +21,7 @@ export const InputForm: FC<InputFormProps> = ({
   initialTitle,
 }) => {
   const [showAlertTitle, setShowAlertTitle] = useState(false);
-  const [showAlertClose, setShowAlertClose] = useState(false);
+  const [showAlertDelete, setShowAlertDelete] = useState(false);
 
   const [title, setTitle] = useState(initialTitle);
   const [description, setDescription] = useState(initialDescription);
@@ -56,7 +56,20 @@ export const InputForm: FC<InputFormProps> = ({
     }
   };
   const handleDelete = () => {
-    setShowAlertClose(true);
+    setShowAlertDelete(true);
+  };
+
+  const handleCancelTitle = () => {
+    setShowAlertTitle(false);
+  };
+
+  const handleCancelDelete = () => {
+    setShowAlertDelete(false);
+  };
+
+  const handleConfirm = () => {
+    onDeleteNote();
+    setShowAlertDelete(false);
   };
 
   return (
@@ -90,8 +103,8 @@ export const InputForm: FC<InputFormProps> = ({
           <Col xs={12} md={12} className="text-end">
             {isEditing ? (
               <ButtonGroup
-                textButtonFirst="Delete Note"
-                textButtonSecond="Save Note"
+                textButtonFirst={"Delete Note"}
+                textButtonSecond={"Save Note"}
                 onClickFirst={handleDelete}
                 onClickSecond={handleEdit}
               />
@@ -102,18 +115,17 @@ export const InputForm: FC<InputFormProps> = ({
             )}
 
             <CustomModal
-              title="No title"
-              description="Title is needed"
+              title={"No title"}
+              description={"Title is needed"}
               show={showAlertTitle}
-              setShow={setShowAlertTitle}
-              onClick={() => {}}
+              onCancel={handleCancelTitle}
             />
             <CustomModal
-              title="Delet Note"
-              description="Are you sure you want to delet note?"
-              show={showAlertClose}
-              setShow={setShowAlertClose}
-              onClick={onDeleteNote}
+              title={"Delete Note"}
+              description={"Are you sure you want to delete note?"}
+              show={showAlertDelete}
+              onCancel={handleCancelDelete}
+              onConfirm={handleConfirm}
             />
           </Col>
         </Row>

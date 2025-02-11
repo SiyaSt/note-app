@@ -17,6 +17,15 @@ export const NoteItem: FC<NoteItemProps> = ({
 }) => {
   const [show, setShow] = useState(false);
 
+  const handleCancel = () => {
+    setShow(false);
+  };
+
+  const handleConfirm = () => {
+    onDeleteNote();
+    setShow(false);
+  };
+
   return (
     <Card>
       <Card.Header>
@@ -28,19 +37,19 @@ export const NoteItem: FC<NoteItemProps> = ({
         </small>
         <p>{note.description}</p>
         <ButtonGroup
-          textButtonFirst="Delete Note"
-          textButtonSecond="Edit Note"
+          textButtonFirst={"Delete Note"}
+          textButtonSecond={"Edit Note"}
           onClickFirst={() => setShow(true)}
           onClickSecond={() => {
             setIsEditing(true);
           }}
         />
         <CustomModal
-          title="Delet Note"
-          description="Are you sure you want to delet note?"
+          title={"Delete Note"}
+          description={"Are you sure you want to delete note?"}
           show={show}
-          setShow={setShow}
-          onClick={onDeleteNote}
+          onCancel={handleCancel}
+          onConfirm={handleConfirm}
         />
       </Card.Body>
     </Card>
