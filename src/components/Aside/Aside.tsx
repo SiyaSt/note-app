@@ -1,7 +1,6 @@
 import { Button, Card } from "react-bootstrap";
 import { NoteList } from "components";
 import { useNotes } from "hooks/useNotes";
-import "./Aside.scss";
 
 export const Aside = () => {
   const { state, dispatch } = useNotes();
