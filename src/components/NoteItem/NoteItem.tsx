@@ -8,9 +8,14 @@ export const NoteItem = () => {
   const [show, setShow] = useState(false);
   const { state, dispatch } = useNotes();
 
-  const confirmDelete = () => {
+  const handleCancel = () => {
+    setShow(false);
+  };
+
+  const handleConfirmDelete = () => {
     if (state.selectedNote) {
       dispatch({ type: "DELETE_NOTE", payload: state.selectedNote.id });
+      setShow(false);
     }
   };
   return (
@@ -35,8 +40,9 @@ export const NoteItem = () => {
           title={"Delete Note"}
           description={"Are you sure you want to delete note?"}
           show={show}
-          setShow={setShow}
-          onClick={confirmDelete}
+          onCancel={handleCancel}
+          onConfirm={handleConfirmDelete}
+          close={true}
         />
       </Card.Body>
     </Card>
